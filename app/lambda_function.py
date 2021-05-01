@@ -4,49 +4,17 @@ lambda_function.py
 # postリクエストをline notify APIに送るためにrequestsのimport
 import os
 import time
-import requests
-import shutil
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 from datetime import datetime, timezone
 import pytz
+import urllib.request, urllib.error
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
+import json
 
-url_list = [
-    "https://www.tokyometro.jp/unkou/history/ginza.html",
-    "https://www.tokyometro.jp/unkou/history/marunouchi.html",
-    "https://www.tokyometro.jp/unkou/history/hibiya.html",
-    "https://www.tokyometro.jp/unkou/history/touzai.html",
-    "https://www.tokyometro.jp/unkou/history/chiyoda.html",
-    "https://www.tokyometro.jp/unkou/history/yurakucho.html",
-    "https://www.tokyometro.jp/unkou/history/hanzoumon.html",
-    "https://www.tokyometro.jp/unkou/history/nanboku.html",
-    "https://www.tokyometro.jp/unkou/history/fukutoshin.html"
-]
+consumer_key = os.getenv("CONSUMER_KEY")
 
 # line messaging APIのトークン
 line_access_token = os.getenv("LINE_ACCESS_TOKEN")
-
-
-def move_bin(
-    fname: str, src_dir: str = "/var/task/bin", dest_dir: str = "/tmp/bin"
-) -> None:
-    if not os.path.exists(dest_dir):
-        os.makedirs(dest_dir)
-    dest_file = os.path.join(dest_dir, fname)
-    shutil.copy2(os.path.join(src_dir, fname), dest_file)
-    os.chmod(dest_file, 0o775)
-
-
-def create_driver(
-    options: webdriver.chrome.options.Options,
-) -> webdriver.chrome.webdriver:
-    driver = webdriver.Chrome(
-        executable_path="/tmp/bin/chromedriver", chrome_options=options
-    )
-    return driver
 
 
 def lambda_handler(event, context):
@@ -56,31 +24,9 @@ def lambda_handler(event, context):
     print('event: {}'.format(event))
     print('context: {}'.format(context))
 
-    move_bin("headless-chromium")
-    move_bin("chromedriver")
-
-    #headless_chromium = os.getenv('HEADLESS_CHROMIUM', '')
-    #chromedriver = os.getenv('CHROMEDRIVER', '')
-    # webdriverの設定
-    options = Options()
-    #options.binary_location = headless_chromium
-    options.binary_location = "/tmp/bin/headless-chromium"
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--single-process')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1280x1696")
-    options.add_argument("--disable-application-cache")
-    options.add_argument("--disable-infobars")
-    options.add_argument("--hide-scrollbars")
-    options.add_argument("--enable-logging")
-    options.add_argument("--log-level=0")
-    options.add_argument("--ignore-certificate-errors")
-    options.add_argument("--homedir=/tmp")
-
-    driver = create_driver(options)
-    # driver = webdriver.Chrome(executable_path=chromedriver, options=options)
+    url = os.getenv("URL")
+    response_body = urllib.request.urlopen(url=url).read()
+    data_dict = json.loads(response_body)
 
     # 現在時刻
     now = datetime.now(tz=timezone.utc)
@@ -90,22 +36,39 @@ def lambda_handler(event, context):
     content0 = jst_now.strftime("%m月%d日 %H:%M現在")
 
     info_list = []
-    for url in url_list:
+    for t in range(9):
+        line_name = data_dict[t]["odpt:railway"]
+        train_info_text = data_dict[t]["odpt:trainInformationText"]
+
         content = []
-        driver.get(url)
-        time.sleep(1)
         # 路線名
-        content1 = driver.find_element_by_css_selector("#v2_contents > div.v2_contents > div > div.v2_headingH1.v2_headingRoute > h1")
-        # 運行状況（概要）
-        content2 = driver.find_element_by_css_selector("#v2_contents > div.v2_contents > div > div.v2_gridC.v2_section.v2_clear.v2_stationUnkouMap.v3_stationUnkouMap > div.v2_sectionS.v2_gridCRow > div.v2_unkouReportInfo > div > div > div.v2_unkouReportTxtCaption.v3_unkouReportTxtCaption > p")
+        if line_name == "odpt.Railway:TokyoMetro.Hanzomon":
+            line_name_text = "半蔵門線"
+        elif line_name == "odpt.Railway:TokyoMetro.Yurakucho":
+            line_name_text = "有楽町線"
+        elif line_name == "odpt.Railway:TokyoMetro.Namboku":
+            line_name_text = "南北線"
+        elif line_name == "odpt.Railway:TokyoMetro.Tozai":
+            line_name_text = "東西線"
+        elif line_name == "odpt.Railway:TokyoMetro.Marunouchi":
+            line_name_text = "丸ノ内線"
+        elif line_name == "odpt.Railway:TokyoMetro.Ginza":
+            line_name_text = "銀座線"
+        elif line_name == "odpt.Railway:TokyoMetro.Chiyoda":
+            line_name_text = "千代田線"
+        elif line_name == "odpt.Railway:TokyoMetro.Fukutoshin":
+            line_name_text = "副都心線"
+        elif line_name == "odpt.Railway:TokyoMetro.Hibiya":
+            line_name_text = "日比谷線"
+
+        content1 = line_name_text
+
         # 運行状況（詳細）
-        content3 = driver.find_elements_by_css_selector("#v2_contents > div.v2_contents > div > div.v2_gridC.v2_section.v2_clear.v2_stationUnkouMap.v3_stationUnkouMap > div.v2_sectionS.v2_gridCRow > div.v2_unkouReportInfo > div > p")
+        content3 = train_info_text
 
         # lineに通知するメッセージを組み立て
-        content.append("●" + content1.text[:-5])
-        content.append(content2.text)
-        for content3s in content3:
-            content.append(content3s.text)
+        content.append("●" + content1)
+        content.append(content3)
 
         info_list.append(content)
 
@@ -114,9 +77,6 @@ def lambda_handler(event, context):
         content_text.append('\n'.join(info_list[i]))
 
     notification_message = content0 +'\n' + '\n\n'.join(content_text)
-
-    driver.close()
-    driver.quit()
 
     line_bot_api = LineBotApi(line_access_token)
     line_bot_api.broadcast(TextSendMessage(text=notification_message))
