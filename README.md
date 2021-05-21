@@ -2,6 +2,8 @@
 
 ### 東京メトロの運行情報をLINE Messaging APIにてLINE botとして通知する
 
+- [東京メトロオープンデータ開発者サイト](https://developer.tokyometroapp.jp/info) に登録
+- APIを利用して、運行情報を取得
 - AWS Lambda で定期実行するように対応　（JST:6時～22時の間、毎時00分と30分に実行）
 - トリガーは、EventBridge (CloudWatch Events)で設定
 - ログは、Amazon SNS により、Cloud Trail Logs へ送信
