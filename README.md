@@ -8,6 +8,11 @@
 - トリガーは、EventBridge (CloudWatch Events)で設定
 - ログは、Amazon SNS により、Cloud Trail Logs へ送信
 
+### 執筆記事：AWS Lambdaで列車運行情報を定期的にLINEへ通知してみた【Python】
+<a href="https://zenn.dev/whitecat_22/articles/9681ab7c85519c">
+  <img src="">
+</a>
+
 　
 #### ●平常時（支障なし）
 
