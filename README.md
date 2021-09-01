@@ -21,21 +21,25 @@
 　
 
 #### ●支障あり
-
+(1)
 ![tokyometro_operation_info02.PNG](https://github.com/whitecat-22/tokyometro_operation_info/blob/main/tokyometro_operation_info02.PNG)
 
 　
 
+(2)
 ![tokyometro_operation_info03.PNG](https://github.com/whitecat-22/tokyometro_operation_info/blob/main/tokyometro_operation_info03.PNG)
 
 　
 
+(3)
 ![tokyometro_operation_info04.PNG](https://github.com/whitecat-22/tokyometro_operation_info/blob/main/tokyometro_operation_info04.PNG)
 
 　
 
+(4)
 ![tokyometro_operation_info05.PNG](https://github.com/whitecat-22/tokyometro_operation_info/blob/main/tokyometro_operation_info05.PNG)
 
 　
 
+(5)
 ![tokyometro_operation_info06.PNG](https://github.com/whitecat-22/tokyometro_operation_info/blob/main/tokyometro_operation_info06.PNG)
