@@ -4,7 +4,7 @@
 
 - [東京メトロオープンデータ開発者サイト](https://developer.tokyometroapp.jp/info) に登録
 - APIを利用して、運行情報を取得
-- AWS Lambda で定期実行するように対応　（平日のJST:6:00～22:00の間、毎時00分に実行）
+- AWS Lambda で定期実行するように対応　（毎日 JST:6:00～22:00の間、毎時00分に実行）
 - トリガーは、EventBridge (CloudWatch Events)で設定
 - ログは、Amazon SNS により、Cloud Trail Logs へ送信
 
