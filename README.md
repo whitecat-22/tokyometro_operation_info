@@ -6,7 +6,7 @@
 - APIを利用して、運行情報を取得
 - AWS Lambda で定期実行するように対応　　（毎日 JST:6:00～22:00の間、毎時00分に実行）
 - トリガーは、EventBridge (旧 CloudWatch Events)で設定
-- ログは、Amazon SNS により、Cloud Trail Logs へ送信
+- ログは、Amazon SNS により Cloud Trail Logs へ送信
 
 　
 
