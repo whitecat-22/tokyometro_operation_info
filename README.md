@@ -1,6 +1,6 @@
 # tokyometro_operation_info
 
-### 東京メトロの運行情報をLINE Messaging APIにてLINE botとして通知する
+### 東京メトロの運行情報を[LINE Messaging API](https://developers.line.biz/ja/services/messaging-api/)にてLINE botとして通知する
 
 - [東京メトロオープンデータ開発者サイト](https://developer.tokyometroapp.jp/info) に登録　　＜※[ユーザ登録申請](https://developer.tokyometroapp.jp/ja/users/sign_up)→承認まで２営業日＞
 - APIを利用して、運行情報を取得
