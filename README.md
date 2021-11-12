@@ -10,6 +10,12 @@
 
 　
 
+### 利用ライブラリ：
+- pytz
+- line-bot-sdk
+
+　
+
 ### 使用技術：
 - Python 3.8
 - AWS
