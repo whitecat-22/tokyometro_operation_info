@@ -11,7 +11,7 @@
 　
 
 ### 利用ライブラリ：
-- pytz
+- pytz　　...UTC→JSTへ変換する際に利用
 - line-bot-sdk
 
 　
