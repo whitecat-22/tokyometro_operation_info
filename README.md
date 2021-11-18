@@ -11,7 +11,7 @@
 　
 
 ### 利用ライブラリ：
-- pytz　　...UTC→JSTへ変換する際に利用
+- pytz　　...UTC→JSTへ変換する際に利用　※Linuxの時間はUTCで管理されているため、通知前にJSTへ変換する必要あり
 - line-bot-sdk
 
 　
