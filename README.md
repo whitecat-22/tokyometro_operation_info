@@ -10,13 +10,13 @@
 
 　
 
-### 利用ライブラリ：
+### ◆利用ライブラリ：
 - pytz　　　　...UTC→JSTへ変換する際に利用　※Linuxの時間はUTCで管理されているため、通知前にJSTへ変換する必要あり
 - line-bot-sdk
 
 　
 
-### 使用技術：
+### ◆使用技術：
 - Python 3.8
 - AWS
   - Lambda
@@ -26,13 +26,13 @@
 
 　
 
-### 執筆記事：[AWS Lambdaで列車運行情報を定期的にLINEへ通知してみた【Python】](https://zenn.dev/whitecat_22/articles/9681ab7c85519c)
+### ◆執筆記事：[AWS Lambdaで列車運行情報を定期的にLINEへ通知してみた【Python】](https://zenn.dev/whitecat_22/articles/9681ab7c85519c)
 <a href="https://zenn.dev/whitecat_22/articles/9681ab7c85519c">
   <img src="https://github.com/whitecat-22/tokyometro_operation_info/blob/main/zenn.png">
 </a>
 
 　
-### 通知結果
+### ◆通知結果
 #### ●平常時（支障なし）
 
 ![tokyometro_operation_info.PNG](https://github.com/whitecat-22/tokyometro_operation_info/blob/main/tokyometro_operation_info.PNG "tokyometro_operation_info.PNG")
