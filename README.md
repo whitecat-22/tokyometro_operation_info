@@ -14,7 +14,7 @@
 - [pytz](https://pythonhosted.org/pytz/)  
 　UTC(協定世界時)→JST(日本標準時)へ変換する際に利用  
 　※Linuxの時間はUTCで管理されているため、通知前にJSTへ変換する必要あり  
-- line-bot-sdk
+- [line-bot-sdk](https://github.com/line/line-bot-sdk-python)
 
 　
 
