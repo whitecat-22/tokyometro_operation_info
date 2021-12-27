@@ -21,7 +21,7 @@
 ### ◆使用技術：
 - Python 3.8
 - AWS
-  - Lambda
+  - [Lambda](https://aws.amazon.com/jp/lambda/?nc2=h_ql_prod_serv_lbd)
   - EventBridge
   - SNS
   - CloudTrailLogs
