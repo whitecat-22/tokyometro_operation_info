@@ -22,7 +22,7 @@
 - Python 3.8
 - AWS
   - [Lambda](https://aws.amazon.com/jp/lambda/?nc2=h_ql_prod_serv_lbd)
-  - EventBridge
+  - [EventBridge](https://aws.amazon.com/jp/eventbridge/?nc2=h_ql_prod_serv_eb)
   - SNS
   - CloudTrailLogs
 
