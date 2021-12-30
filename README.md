@@ -23,7 +23,7 @@
 - AWS
   - [Lambda](https://aws.amazon.com/jp/lambda/?nc2=h_ql_prod_serv_lbd)
   - [EventBridge](https://aws.amazon.com/jp/eventbridge/?nc2=h_ql_prod_serv_eb)
-  - SNS
+  - [SNS](https://aws.amazon.com/jp/sns/?nc2=h_ql_prod_ap_sns&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
   - [CloudTrailLogs](https://aws.amazon.com/jp/cloudtrail/?nc2=h_ql_prod_mg_ct)
 
 　
