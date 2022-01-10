@@ -19,7 +19,7 @@
 　
 
 ### ◆使用技術：
-- Python 3.8
+- [Python](https://www.python.org/) 3.8
 - AWS
   - [Lambda](https://aws.amazon.com/jp/lambda/?nc2=h_ql_prod_serv_lbd)
   - [EventBridge](https://aws.amazon.com/jp/eventbridge/?nc2=h_ql_prod_serv_eb)
