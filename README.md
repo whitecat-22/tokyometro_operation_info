@@ -12,7 +12,7 @@
 
 ### ◆利用ライブラリ：
 - [pytz](https://pythonhosted.org/pytz/)  
-　UTC(協定世界時)→JST(日本標準時)へ変換する際に利用  
+　[UTC(協定世界時)](https://ja.wikipedia.org/wiki/%E5%8D%94%E5%AE%9A%E4%B8%96%E7%95%8C%E6%99%82)→JST(日本標準時)へ変換する際に利用  
 　※Linuxの時間はUTCで管理されているため、通知前にJSTへ変換する必要あり  
 - [line-bot-sdk](https://github.com/line/line-bot-sdk-python)
 
