@@ -11,10 +11,9 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage
 import json
 
-consumer_key = os.getenv("CONSUMER_KEY")
-
+CONSUMER_KEY = os.getenv("CONSUMER_KEY")
 # line messaging APIのトークン
-line_access_token = os.getenv("LINE_ACCESS_TOKEN")
+LINE_ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN")
 
 
 def lambda_handler(event, context):
@@ -24,9 +23,10 @@ def lambda_handler(event, context):
     print('event: {}'.format(event))
     print('context: {}'.format(context))
 
-    url = os.getenv("URL")
-    response_body = urllib.request.urlopen(url=url).read()
+    URL = os.getenv("URL")
+    response_body = urllib.request.urlopen(url=URL).read()
     data_dict = json.loads(response_body)
+    print(data_dict)
 
     # 現在時刻
     now = datetime.now(tz=timezone.utc)
@@ -64,7 +64,7 @@ def lambda_handler(event, context):
         content1 = line_name_text
 
         # 運行状況（詳細）
-        content3 = train_info_text
+        content3 = train_info_text['ja']
 
         # lineに通知するメッセージを組み立て
         content.append("●" + content1)
@@ -78,7 +78,7 @@ def lambda_handler(event, context):
 
     notification_message = content0 +'\n' + '\n\n'.join(content_text)
 
-    line_bot_api = LineBotApi(line_access_token)
+    line_bot_api = LineBotApi(LINE_ACCESS_TOKEN)
     line_bot_api.broadcast(TextSendMessage(text=notification_message))
 
     return {
