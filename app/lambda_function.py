@@ -1,7 +1,7 @@
 """
 lambda_function.py
 """
-# postリクエストをline notify APIに送るためにrequestsのimport
+# postリクエストをline bot APIに送るためにrequestsのimport
 import os
 import time
 from datetime import datetime, timezone
@@ -38,7 +38,7 @@ def lambda_handler(event, context):
     info_list = []
     for t in range(9):
         line_name = data_dict[t]["odpt:railway"]
-        train_info_text = data_dict[t]["odpt:trainInformationText"]
+        train_info_text = data_dict[t]["odpt:trainInformationText"]["ja"]
 
         content = []
         # 路線名
@@ -64,7 +64,7 @@ def lambda_handler(event, context):
         content1 = line_name_text
 
         # 運行状況（詳細）
-        content3 = train_info_text['ja']
+        content3 = train_info_text
 
         # lineに通知するメッセージを組み立て
         content.append("●" + content1)
