@@ -15,6 +15,17 @@ CONSUMER_KEY = os.getenv("CONSUMER_KEY")
 # line messaging APIのトークン
 LINE_ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN")
 
+line_name_dict = {
+    "odpt.Railway:TokyoMetro.Ginza": "銀座線",
+    "odpt.Railway:TokyoMetro.Marunouchi": "丸ノ内線",
+    "odpt.Railway:TokyoMetro.Chiyoda": "千代田線",
+    "odpt.Railway:TokyoMetro.Tozai": "東西線",
+    "odpt.Railway:TokyoMetro.Yurakucho": "有楽町線",
+    "odpt.Railway:TokyoMetro.Fukutoshin": "副都心線",
+    "odpt.Railway:TokyoMetro.Hanzomon": "半蔵門線",
+    "odpt.Railway:TokyoMetro.Hibiya": "日比谷線",
+    "odpt.Railway:TokyoMetro.Namboku": "南北線",
+}
 
 def lambda_handler(event, context):
     """
@@ -42,26 +53,7 @@ def lambda_handler(event, context):
 
         content = []
         # 路線名
-        if line_name == "odpt.Railway:TokyoMetro.Hanzomon":
-            line_name_text = "半蔵門線"
-        elif line_name == "odpt.Railway:TokyoMetro.Yurakucho":
-            line_name_text = "有楽町線"
-        elif line_name == "odpt.Railway:TokyoMetro.Namboku":
-            line_name_text = "南北線"
-        elif line_name == "odpt.Railway:TokyoMetro.Tozai":
-            line_name_text = "東西線"
-        elif line_name == "odpt.Railway:TokyoMetro.Marunouchi":
-            line_name_text = "丸ノ内線"
-        elif line_name == "odpt.Railway:TokyoMetro.Ginza":
-            line_name_text = "銀座線"
-        elif line_name == "odpt.Railway:TokyoMetro.Chiyoda":
-            line_name_text = "千代田線"
-        elif line_name == "odpt.Railway:TokyoMetro.Fukutoshin":
-            line_name_text = "副都心線"
-        elif line_name == "odpt.Railway:TokyoMetro.Hibiya":
-            line_name_text = "日比谷線"
-
-        content1 = line_name_text
+        content1 = line_name_dict[line_name]
 
         # 運行状況（詳細）
         content3 = train_info_text

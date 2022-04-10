@@ -1,2 +1,2 @@
-pytz==2021.1
-line-bot-sdk==1.19.0
+pytz
+line-bot-sdk
